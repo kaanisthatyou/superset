@@ -42,6 +42,9 @@ npm run build      # dist/
 2. GitHub'da yalnızca o depoya yetkili bir *fine-grained token* oluştur: **Contents → Read and write**.
 3. Uygulamada Ayarlar → Kayıt deposu: sahip, depo adı, anahtar.
 4. Aynı ekrandan "Başka bir cihaza kur" ile çıkan kodu diğer telefona okut.
+5. Site şifresi: bu deponun Settings → Secrets and variables → Actions sayfasına `APP_PASSWORD` adlı bir secret ekle.
+   Yayın, şifrenin yalnızca PBKDF2 özetini koda gömer; her cihaz şifreyi bir kez sorar. Secret yoksa yayın durur.
+   Şifreyi değiştirmek için secret'ı güncelle ve "Yayınla" iş akışını yeniden çalıştır.
 
 ## Kaynaklar
 
