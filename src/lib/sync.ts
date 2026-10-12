@@ -186,7 +186,9 @@ export function syncNow(): Promise<void> {
 function explain(e: GhError) {
   if (e.status === 401) return 'Anahtar geçersiz ya da süresi dolmuş. Ayarlardan yeni anahtar gir.';
   if (e.status === 403) return 'Anahtarın bu depoya yazma izni yok (Contents: Read and write gerekli).';
-  if (e.status === 404) return 'Depo bulunamadı. Sahip ve depo adını kontrol et.';
+  // GitHub, anahtarın göremediği özel depo için de 404 döner.
+  if (e.status === 404)
+    return 'Depo bulunamadı ya da anahtarın bu depoya erişimi yok. Sahip ve depo adını, anahtarda bu deponun seçili olduğunu kontrol et.';
   return `GitHub ${e.status}: ${e.message}`;
 }
 
