@@ -1,0 +1,389 @@
+{
+ "note": "Müzik havuzu. vibe: power = ağır setler, cardio = kardiyo/tempo, calm = soğuma/esneme. /gym ile güncellenir.",
+ "vibes": {
+  "power": [
+   {
+    "id": "3h5T5JypYU7huFiVYhv1dr",
+    "title": "BbY WOW",
+    "artist": "KAROL G, Judeline, rusowsky",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0221deb742375f88edfb2e7368"
+   },
+   {
+    "id": "70cHKK8bHAfJrOGVnfRG9J",
+    "title": "Nicole Kidman",
+    "artist": "ADÉLA",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02ac9d5d5263e9f03802d6864c"
+   },
+   {
+    "id": "0kosUz0jePvjiz4ctmR6wL",
+    "title": "Dai Dai",
+    "artist": "Shakira, Burna Boy",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0203cadf1b3fe324c1dc710ed4"
+   },
+   {
+    "id": "3ouNEk0tv5TTi8VWMe1xbX",
+    "title": "Animal",
+    "artist": "KATSEYE",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e029e8d48f27391ce383862b8e8"
+   },
+   {
+    "id": "514joG57v4yKTsfQmz7stz",
+    "title": "Janice STFU",
+    "artist": "Drake",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02fe9d3ab9adb1d3b59835b81c"
+   },
+   {
+    "id": "5b5cPscqVEMChvDqscVw26",
+    "title": "Training Season",
+    "artist": "Dua Lipa",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e022f8790ed72296c2614607575"
+   },
+   {
+    "id": "1DwscornXpj8fmOmYVlqZt",
+    "title": "Stateside + Zara Larsson",
+    "artist": "PinkPantheress, Zara Larsson",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02684ecc5bc1b724d0106ad694"
+   },
+   {
+    "id": "1VWiDyYTrqQhhmnWANWkFa",
+    "title": "SaWaDiKa",
+    "artist": "LISA",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0273ae1df692b540f56d14617e"
+   },
+   {
+    "id": "3cZajhyr8LmtPfHZ9296tj",
+    "title": "No Broke Boys",
+    "artist": "Disco Lines, Tinashe",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02699b0363dda94e1f1e32eef5"
+   },
+   {
+    "id": "1IHWl5LamUGEuP4ozKQSXZ",
+    "title": "Tití Me Preguntó",
+    "artist": "Bad Bunny",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0249d694203245f241a1bcaa72"
+   },
+   {
+    "id": "6DCZcSspjsKoFjzjrWoCdn",
+    "title": "God's Plan",
+    "artist": "Drake",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02f907de96b9a4fbc04accc0d5"
+   },
+   {
+    "id": "0k2GOhqsrxDTAbFFSdNJjT",
+    "title": "Temperature",
+    "artist": "Sean Paul",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0296501589af555d9b1151976a"
+   },
+   {
+    "id": "6gBFPUFcJLzWGx4lenP6h2",
+    "title": "goosebumps",
+    "artist": "Travis Scott",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e028752a7355996e64709247c53"
+   },
+   {
+    "id": "0nbXyq5TXYPCO7pr3N8S4I",
+    "title": "The Box",
+    "artist": "Roddy Ricch",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02820b43679aab8d3b47001f9c"
+   },
+   {
+    "id": "503OTo2dSqe7qk76rgsbep",
+    "title": "Still D.R.E.",
+    "artist": "Dr. Dre, Snoop Dogg",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e029b19c107109de740bad72df5"
+   },
+   {
+    "id": "3w0w2T288dec0mgeZZqoNN",
+    "title": "CARNIVAL",
+    "artist": "¥$, Kanye West, Ty Dolla $ign, Rich The Kid, Playboi Carti",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e020a31b4026a452ae8c3f97a76"
+   },
+   {
+    "id": "7KwZNVEaqikRSBSpyhXK2j",
+    "title": "Hypnotize - 2014 Remaster",
+    "artist": "The Notorious B.I.G.",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02fde79b88e2a659c394c5ae30"
+   },
+   {
+    "id": "2xLMifQCjDGFmkHkpNLD9h",
+    "title": "SICKO MODE",
+    "artist": "Travis Scott",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02daec894c14c0ca42d76eeb32"
+   },
+   {
+    "id": "7KXjTSCq5nL1LoYtL7XAwS",
+    "title": "HUMBLE.",
+    "artist": "Kendrick Lamar",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e028b52c6b9bc4e43d873869699"
+   },
+   {
+    "id": "57wp7VFnV8X0pSVnYArGeJ",
+    "title": "Whatever She Wants",
+    "artist": "Bryson Tiller",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e020a193e3203996335863da13e"
+   },
+   {
+    "id": "1Cp8mfSFvYo7ddTy7NkmpL",
+    "title": "The Past, The Present, The Future",
+    "artist": "David Guetta, Marten Hørger, Men Machine",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e023850bff653fc95c6ac8a4b2e"
+   },
+   {
+    "id": "1ExjoMeJQxAYtHFke6eW31",
+    "title": "Jamaican (Bam Bam)",
+    "artist": "HUGEL, SOLTO (FR)",
+    "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02121f28faa2fca034a4028a16"
+   },
+   {
+    "id": "2Lb9ww5vZAnveWnrFQfAKR",
+    "title": "New Religion",
+    "artist": "Bebe Rexha, Faithless",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e021b032b989cb6d28908bde1c6"
+   },
+   {
+    "id": "6vbQFxIETahvyrcI6N00Cc",
+    "title": "Voicemail (Tiësto Remix)",
+    "artist": "KUKO, Tiësto",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e026a53a0664f3d16f539190ccd"
+   },
+   {
+    "id": "5Vz9XUiw2emOIRLobTMEkD",
+    "title": "Happiness Is So Sad",
+    "artist": "Swedish House Mafia, Lykke Li",
+    "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02d62c835cd50b418a53a45c68"
+   },
+   {
+    "id": "1wQwTyocYlAE27QEk8BQXa",
+    "title": "Blade",
+    "artist": "D'Angello & Francis",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02bed11626b36a3975af0da660"
+   },
+   {
+    "id": "1U9fCIjViZNHm1HoxUpK8H",
+    "title": "Turn The Lights Off",
+    "artist": "Braaheim, Robbe",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02ef01ccd84a04e2aab912c0af"
+   },
+   {
+    "id": "5Ef5Df4m9y7X4ixO4TgBWy",
+    "title": "Push It",
+    "artist": "Disco Lines, Maesic, Mason, Princess Superstar",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02bc0a6688154a65dbaf9a77ae"
+   }
+  ],
+  "cardio": [
+   {
+    "id": "6J5kc12BW5HuP3d7C3vvx8",
+    "title": "EoO",
+    "artist": "Bad Bunny",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02bbd45c8d36e0e045ef640411"
+   },
+   {
+    "id": "4Ev2R78P8cMZcdmv3RCUlI",
+    "title": "Ain't In LA - Coachella 2016 Remix",
+    "artist": "ADÉLA, Dylan Brady",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02be9663dcdc0cb44d16535dca"
+   },
+   {
+    "id": "3cZajhyr8LmtPfHZ9296tj",
+    "title": "No Broke Boys",
+    "artist": "Disco Lines, Tinashe",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02699b0363dda94e1f1e32eef5"
+   },
+   {
+    "id": "1D5L58KLBbceOynTP4DQnY",
+    "title": "It's Me",
+    "artist": "ILLIT",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0261eea484e31bca065904f1c6"
+   },
+   {
+    "id": "4uUG5RXrOk84mYEfFvj3cK",
+    "title": "I'm Good (Blue)",
+    "artist": "David Guetta, Bebe Rexha",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02f24c7321eabddffc3829676b"
+   },
+   {
+    "id": "0kl6Ozan3fuUdCl6TlB15v",
+    "title": "Talk To You (ft. 54 Ultra)",
+    "artist": "ANOTR, 54 Ultra",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02b42ed7f52290f1583760a7e2"
+   },
+   {
+    "id": "5nPbKG04fhLkIAjcPFaZq7",
+    "title": "I Adore You (feat. Daecolm)",
+    "artist": "HUGEL, Topic, Arash, Daecolm",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0205005dc483e9f8a73ccc6d3d"
+   },
+   {
+    "id": "4KmkJjHTNlr1jFY56Lyz4E",
+    "title": "PINKY UP",
+    "artist": "KATSEYE",
+    "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02f995fcdb4d6f1c273a3bc56b"
+   },
+   {
+    "id": "2FAZskT9yRjp2Oow9szJD8",
+    "title": "The Days - NOTION Remix",
+    "artist": "Chrystal, NOTION",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e029041b9965925059507fb44af"
+   },
+   {
+    "id": "78nx0HDJIFD5xDq2L5420Z",
+    "title": "Blessings",
+    "artist": "Calvin Harris, Clementine Douglas",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02ff86507cb1a9c7645a330314"
+   },
+   {
+    "id": "2BoSbGSp2OaDBOx5NFHkrr",
+    "title": "On 2nite",
+    "artist": "Silva Bumpa",
+    "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02df5399677b85e9f581bb9833"
+   },
+   {
+    "id": "6TWbY1dq8eYtFiMiGdBlOa",
+    "title": "Free Your Mind",
+    "artist": "Prospa, Cloonee, Sybil",
+    "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0238974737cba5770d9dba1cd6"
+   },
+   {
+    "id": "4jSrN7kXdQUmbVxJe5x6Xg",
+    "title": "Makina Time",
+    "artist": "Dimitri Vegas & Like Mike, Marlon Hoffstadt, Dj Konik, Dimitri Vegas, Like Mike",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e029960bd6ef598fe5537e902ca"
+   },
+   {
+    "id": "6GOOcBV0wLoHrH5D9AWA32",
+    "title": "Say My Name - Remix",
+    "artist": "Morgan Seatree, Florence + The Machine",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0284673b6094ab58850c189e5d"
+   },
+   {
+    "id": "2Lb9ww5vZAnveWnrFQfAKR",
+    "title": "New Religion",
+    "artist": "Bebe Rexha, Faithless",
+    "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e021b032b989cb6d28908bde1c6"
+   },
+   {
+    "id": "5Vz9XUiw2emOIRLobTMEkD",
+    "title": "Happiness Is So Sad",
+    "artist": "Swedish House Mafia, Lykke Li",
+    "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02d62c835cd50b418a53a45c68"
+   },
+   {
+    "id": "53iuhJlwXhSER5J2IYYv1W",
+    "title": "The Fate of Ophelia",
+    "artist": "Taylor Swift",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d7812467811a7da6e6a44902"
+   },
+   {
+    "id": "4Dvkj6JhhA12EX05fT7y2e",
+    "title": "As It Was",
+    "artist": "Harry Styles",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0282ce362511fb3d9dda6578ee"
+   },
+   {
+    "id": "1DwscornXpj8fmOmYVlqZt",
+    "title": "Stateside + Zara Larsson",
+    "artist": "PinkPantheress, Zara Larsson",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02684ecc5bc1b724d0106ad694"
+   },
+   {
+    "id": "1VWiDyYTrqQhhmnWANWkFa",
+    "title": "SaWaDiKa",
+    "artist": "LISA",
+    "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0273ae1df692b540f56d14617e"
+   },
+   {
+    "id": "1CPZ5BxNNd0n0nF4Orb9JS",
+    "title": "Golden",
+    "artist": "HUNTR/X, EJAE, AUDREY NUNA, REI AMI, KPop Demon Hunters Cast",
+    "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024dcb6c5df15cf74596ab25a4"
+   },
+   {
+    "id": "2gam98EZKrF9XuOkU13ApN",
+    "title": "Promiscuous",
+    "artist": "Nelly Furtado, Timbaland",
+    "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02a6f439c8957170652f9410e2"
+   },
+   {
+    "id": "1xOqGUkyxGQRdCvGpvWKmL",
+    "title": "Gabriela",
+    "artist": "KATSEYE",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02f8d4d00ffe09373efb13ce29"
+   }
+  ],
+  "calm": [
+   {
+    "id": "6dOtVTDdiauQNBQEDOtlAB",
+    "title": "BIRDS OF A FEATHER",
+    "artist": "Billie Eilish",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0271d62ea7ea8a5be92d3c1f62"
+   },
+   {
+    "id": "5XeFesFbtLpXzIVDNQP22n",
+    "title": "I Wanna Be Yours",
+    "artist": "Arctic Monkeys",
+    "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024ae1c4c5c45aabe565499163"
+   },
+   {
+    "id": "21IYMdzTrzSe191Cy5eMap",
+    "title": "Sailor Song",
+    "artist": "Gigi Perez",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0249c26270052e1671add569c1"
+   },
+   {
+    "id": "5y2ijHECwFYWqcAHKTZgzD",
+    "title": "Risk It All",
+    "artist": "Bruno Mars",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e023eb8dc748f7efb1470f74395"
+   },
+   {
+    "id": "5ViLKrbyL3HD6wsq3AB9eI",
+    "title": "White Keys",
+    "artist": "Dominic Fike",
+    "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e023696096119ef08824cf85ede"
+   },
+   {
+    "id": "51rfRCiUSvxXlCSCfIztBy",
+    "title": "I Love You, I'm Sorry",
+    "artist": "Gracie Abrams",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e026e2101520787791370f4a96b"
+   },
+   {
+    "id": "5CZ40GBx1sQ9agT82CLQCT",
+    "title": "traitor",
+    "artist": "Olivia Rodrigo",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a91c10fe9472d9bd89802e5a"
+   },
+   {
+    "id": "6qqrTXSdwiJaq8SO0X2lSe",
+    "title": "Ordinary",
+    "artist": "Alex Warren",
+    "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02457cfd5a54720ab3b0820064"
+   },
+   {
+    "id": "2TktkzfozZifbQhXjT6I33",
+    "title": "Evergreen (You Didn’t Deserve Me At All)",
+    "artist": "Omar Apollo",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a4b3a51e2b3941f5275f052f"
+   },
+   {
+    "id": "5BZsQlgw21vDOAjoqkNgKb",
+    "title": "DAISIES",
+    "artist": "Justin Bieber",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d65c4773bc5061fd27facc5b"
+   },
+   {
+    "id": "2gYTC8DsplN3RNdpdBcCOQ",
+    "title": "Die On This Hill",
+    "artist": "SIENNA SPIRO",
+    "cover": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e020901e50bfaff4351a29f462b"
+   },
+   {
+    "id": "5IMpnpD0tQVcqWlVIgtAtV",
+    "title": "iloveitiloveitiloveit",
+    "artist": "Bella Kay",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02e74e15fe75e80ea69f38a680"
+   }
+  ]
+ }
+}

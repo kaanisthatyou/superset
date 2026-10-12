@@ -1,0 +1,279 @@
+{
+  "id": "kaan-2026-10-12",
+  "profile": "kaan",
+  "title": "Hafta 1 — Tanışma",
+  "startDate": "2026-10-12",
+  "endDate": "2026-10-18",
+  "coachNote": "İlk hafta ağırlık avı değil, keşif haftası. Her harekette son iki tekrarı zorlayan ama formu bozmayan ağırlığı bul ve yaz; gelecek haftanın programını bu sayılara göre kuracağım. Üç gün tüm vücut, cumartesi birlikte kardiyo.",
+  "days": [
+    {
+      "id": "a",
+      "weekday": 1,
+      "title": "Tüm vücut A",
+      "subtitle": "İtiş ağırlıklı",
+      "minutes": 55,
+      "warmup": "5 dk tempolu yürüyüş, ardından ilk hareketin ağırlığının yarısıyla 1 ısınma seti.",
+      "cooldown": "Göğüs ve ön bacak için 30'ar saniye esneme.",
+      "exercises": [
+        {
+          "exerciseId": "10Z2DXU",
+          "sets": 3,
+          "reps": "10-12",
+          "unit": "reps",
+          "restSec": 90,
+          "weighted": true,
+          "tip": "Belini ve kalçanı sırtlıktan ayırma. Dizlerini kilitlemeden it, inerken 2 saniyeye yay. Ayakların omuz genişliğinde, platformun ortasında."
+        },
+        {
+          "exerciseId": "SpYC0Kp",
+          "sets": 3,
+          "reps": "8-10",
+          "unit": "reps",
+          "restSec": 90,
+          "weighted": true,
+          "tip": "Kürek kemiklerini sıkıp sehpaya göm, ayakların yerde sabit. Dambılları göğüs hizasına kontrollü indir; dirseklerin gövdeyle yaklaşık 45° yapsın. kg alanına tek dambılın ağırlığını yaz."
+        },
+        {
+          "exerciseId": "qdRxqCj",
+          "name": "Lat Pulldown",
+          "sets": 3,
+          "reps": "10-12",
+          "unit": "reps",
+          "restSec": 75,
+          "weighted": true,
+          "tip": "Barı köprücük kemiğine çek, ensene değil. Hareketi dirseklerinle başlat; gövdeni sallama. Yukarı bırakırken kanatların gerildiğini hisset."
+        },
+        {
+          "exerciseId": "znQUdHY",
+          "sets": 3,
+          "reps": "10-12",
+          "unit": "reps",
+          "restSec": 75,
+          "weighted": true,
+          "tip": "Sırtlık dik, bel boşluğunu abartma. Dambılları kulak hizasından it, tepede birbirine çarptırma. kg alanına tek dambılın ağırlığını yaz."
+        },
+        {
+          "exerciseId": "dU605di",
+          "name": "Triceps Pushdown (Halat)",
+          "sets": 2,
+          "reps": "12-15",
+          "unit": "reps",
+          "restSec": 60,
+          "weighted": true,
+          "tip": "Dirseklerin gövdene yapışık kalsın; sadece ön kolun hareket etsin. Altta halatı iki yana aç ve bir an sık."
+        },
+        {
+          "exerciseId": "iny3m5y",
+          "sets": 3,
+          "reps": "10 / taraf",
+          "unit": "reps",
+          "restSec": 45,
+          "weighted": false,
+          "tip": "Belin yere yapışık kalsın — bütün olay bu. Karşı kol ve bacağı yavaşça uzat, nefes vererek geri topla."
+        },
+        {
+          "exerciseId": "rjiM4L3",
+          "name": "Eğimli Yürüyüş",
+          "sets": 1,
+          "reps": "12",
+          "unit": "min",
+          "restSec": 0,
+          "weighted": false,
+          "tip": "Eğim %8–10, hız 5–5,5 km/s. Tutamaklara asılma. Konuşabildiğin ama şarkı söyleyemediğin tempo doğru tempo."
+        }
+      ]
+    },
+    {
+      "id": "b",
+      "weekday": 3,
+      "title": "Tüm vücut B",
+      "subtitle": "Çekiş ağırlıklı",
+      "minutes": 55,
+      "warmup": "5 dk bisiklet, ardından boş ellerle 10 kalça menteşesi (hip hinge) tekrarı.",
+      "cooldown": "Arka bacak ve kanat için 30'ar saniye esneme.",
+      "exercises": [
+        {
+          "exerciseId": "rR0LJzx",
+          "name": "Dumbbell Romanian Deadlift",
+          "sets": 3,
+          "reps": "10-12",
+          "unit": "reps",
+          "restSec": 90,
+          "weighted": true,
+          "tip": "Hareket belden değil kalçadan: kalçanı arkadaki duvara it, dizler hafif bükük, sırt dümdüz. Dambıllar bacaklarını sıyırarak kaval ortasına insin. Arka bacakta gerilme hissetmelisin, belde değil."
+        },
+        {
+          "exerciseId": "fUBheHs",
+          "sets": 3,
+          "reps": "10-12",
+          "unit": "reps",
+          "restSec": 75,
+          "weighted": true,
+          "tip": "Göğsün dik, gövden sabit. Kolu göbeğine çek ve kürek kemiklerini bir an sık; öne giderken omuzlarını yuvarlama."
+        },
+        {
+          "exerciseId": "DOoWcnA",
+          "sets": 3,
+          "reps": "10-12",
+          "unit": "reps",
+          "restSec": 75,
+          "weighted": true,
+          "tip": "Koltuğu, tutamaklar göğüs ortası hizasına gelecek şekilde ayarla. Omuzların kulaklarına kalkmasın; iterken nefes ver."
+        },
+        {
+          "exerciseId": "yn8yg1r",
+          "sets": 3,
+          "reps": "12",
+          "unit": "reps",
+          "restSec": 75,
+          "weighted": true,
+          "tip": "Dambılı göğsüne yasla, dirsekler aşağı baksın. Topukların yerde, dizlerin ayak uçlarıyla aynı yöne açılsın. Kalçan diz hizasına inene kadar çök."
+        },
+        {
+          "exerciseId": "NbVPDMW",
+          "sets": 2,
+          "reps": "12-15",
+          "unit": "reps",
+          "restSec": 60,
+          "weighted": true,
+          "tip": "Dirsekler sabit, gövdeyi sallama. İnişi 2–3 saniyeye yay; biseps asıl orada çalışır. kg alanına tek dambılın ağırlığını yaz."
+        },
+        {
+          "exerciseId": "nCU1Ekp",
+          "sets": 3,
+          "reps": "12",
+          "unit": "reps",
+          "restSec": 45,
+          "weighted": false,
+          "tip": "Bacakları savurma; kalçanı yerden karın kasınla kaldır. İnerken belin yerden kopmasın."
+        },
+        {
+          "exerciseId": "a8VDgLw",
+          "name": "Bisiklet",
+          "sets": 1,
+          "reps": "12",
+          "unit": "min",
+          "restSec": 0,
+          "weighted": false,
+          "tip": "1 dk hızlı, 2 dk rahat; dört tur. Sele yüksekliği: pedal en alttayken dizin hafif bükük kalmalı."
+        }
+      ]
+    },
+    {
+      "id": "c",
+      "weekday": 5,
+      "title": "Tüm vücut C",
+      "subtitle": "Makine turu",
+      "minutes": 60,
+      "warmup": "5 dk eliptik, ardından omuz çevirme ve 10 vücut ağırlığı squat.",
+      "cooldown": "Ön bacak, arka bacak ve göğüs için 30'ar saniye esneme.",
+      "exercises": [
+        {
+          "exerciseId": "my33uHU",
+          "sets": 3,
+          "reps": "12-15",
+          "unit": "reps",
+          "restSec": 60,
+          "weighted": true,
+          "tip": "Dizin makinenin dönme ekseniyle aynı hizada olsun. Tepede bir saniye sık, ağırlığı düşürmeden indir."
+        },
+        {
+          "exerciseId": "Zg3XY7P",
+          "sets": 3,
+          "reps": "12-15",
+          "unit": "reps",
+          "restSec": 60,
+          "weighted": true,
+          "tip": "Kalçan koltuktan kalkmasın. Topuklarını kalçana doğru çek, yavaşça geri bırak."
+        },
+        {
+          "exerciseId": "ns0SIbU",
+          "sets": 3,
+          "reps": "10",
+          "unit": "reps",
+          "restSec": 90,
+          "weighted": true,
+          "tip": "Sehpa 30° civarı; daha dik olursa iş omuza kayar. Dambılları üst göğse indir. kg alanına tek dambılın ağırlığını yaz."
+        },
+        {
+          "exerciseId": "MaMuGH6",
+          "sets": 3,
+          "reps": "6-10",
+          "unit": "reps",
+          "restSec": 90,
+          "weighted": true,
+          "tip": "Buradaki kg makinenin sana verdiği destek: sayı küçüldükçe sen güçleniyorsun. Çenen barı geçsin, aşağıda kolların tam uzasın."
+        },
+        {
+          "exerciseId": "DsgkuIt",
+          "sets": 3,
+          "reps": "12-15",
+          "unit": "reps",
+          "restSec": 45,
+          "weighted": true,
+          "tip": "Hafif ağırlık, temiz form. Kolları omuz hizasına kadar kaldır, daha yukarı değil; serçe parmak tarafı hafif yukarıda. kg alanına tek dambılın ağırlığını yaz."
+        },
+        {
+          "exerciseId": "wqNPGCg",
+          "name": "Face Pull (Halat)",
+          "sets": 2,
+          "reps": "15",
+          "unit": "reps",
+          "restSec": 45,
+          "weighted": true,
+          "tip": "Makara yüz hizasında. Halatı alnına doğru çek, dirsekler yukarıda ve dışarıda. Masa başı duruşunun panzehiri; hafif tut."
+        },
+        {
+          "exerciseId": "XVDdcoj",
+          "sets": 3,
+          "reps": "20",
+          "unit": "reps",
+          "restSec": 45,
+          "weighted": false,
+          "tip": "Sadece kolların değil göğsün dönsün. Sırtın düz, hafif geriye yaslan. Sağ + sol = 2 tekrar."
+        },
+        {
+          "exerciseId": "rjtuP6X",
+          "name": "Eliptik",
+          "sets": 1,
+          "reps": "10",
+          "unit": "min",
+          "restSec": 0,
+          "weighted": false,
+          "tip": "Orta dirençte sabit tempo. Haftanın son kuvvet günü; bitirince kendini tükenmiş değil iyi hissetmelisin."
+        }
+      ]
+    },
+    {
+      "id": "d",
+      "weekday": 6,
+      "title": "Birlikte kardiyo",
+      "subtitle": "Yan yana iki bant",
+      "minutes": 40,
+      "together": true,
+      "warmup": "İlk 3 dakika düz zeminde rahat yürüyüş.",
+      "cooldown": "Son 3 dakika eğimi sıfırla; baldır ve kalça için esneme.",
+      "exercises": [
+        {
+          "exerciseId": "rjiM4L3",
+          "name": "Eğimli Yürüyüş",
+          "sets": 1,
+          "reps": "30",
+          "unit": "min",
+          "restSec": 0,
+          "weighted": false,
+          "tip": "Eğim %6–10, hız 5–6 km/s. Yan yana yürüyün, sohbet edebildiğiniz tempoda kalın: yağ yakımı için en verimli bölge tam orası."
+        },
+        {
+          "exerciseId": "iny3m5y",
+          "sets": 2,
+          "reps": "10 / taraf",
+          "unit": "reps",
+          "restSec": 30,
+          "weighted": false,
+          "tip": "Kapanış: yavaş ve kontrollü. Belin yerde."
+        }
+      ]
+    }
+  ]
+}

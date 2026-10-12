@@ -1,0 +1,14 @@
+{
+  "profiles": [
+    {
+      "id": "kaan",
+      "name": "Kaan",
+      "color": "blue"
+    },
+    {
+      "id": "partner",
+      "name": "Partner",
+      "color": "red"
+    }
+  ]
+}

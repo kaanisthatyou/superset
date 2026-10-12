@@ -1,0 +1,8 @@
+node_modules
+dist
+dev-dist
+*.log
+.env
+.env.local
+# Özel veri deposunun yerel kopyası (ayrı bir git deposu)
+/data
