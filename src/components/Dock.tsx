@@ -74,7 +74,9 @@ export function Dock() {
             >
               <div className="flex items-center gap-2 pr-0.5 pl-1.5">
                 <p className="eyebrow min-w-0 flex-1 truncate text-steel">
-                  <span className="text-ink">Spotify'da dinlemek ister misin?</span>
+                  <span className="text-ink">
+                    <span lang="en">Spotify</span>'da dinlemek ister misin?
+                  </span>
                 </p>
                 <button
                   onClick={() => useUi.getState().setSong(null)}
