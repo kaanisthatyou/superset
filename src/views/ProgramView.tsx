@@ -14,7 +14,7 @@ import { useUi } from '../lib/ui';
 
 export function Wordmark() {
   return (
-    <span className="flex items-center gap-2">
+    <span className="flex shrink-0 items-center gap-2">
       <svg viewBox="0 0 64 64" className="h-7 w-7" aria-hidden="true">
         <path d="M32 4a28 28 0 0 0 0 56z" fill="var(--me)" />
         <path d="M32 4a28 28 0 0 1 0 56z" fill="var(--you)" />
@@ -48,12 +48,12 @@ function SyncBadge() {
     <button
       onClick={() => (connected && status !== 'error' ? void syncNow() : useUi.getState().open({ type: 'settings' }))}
       title={error ?? undefined}
-      className={`eyebrow flex h-9 items-center gap-1.5 rounded-full px-3 whitespace-nowrap ring-1 ${
+      className={`eyebrow flex h-9 min-w-0 items-center gap-1.5 rounded-full px-3 whitespace-nowrap ring-1 ${
         warn ? 'bg-plate-red text-paper ring-plate-red' : 'text-steel ring-line'
       }`}
     >
-      {warn || !connected || status === 'offline' ? <CloudOff size={12} /> : <RefreshCw size={12} className={status === 'syncing' ? 'animate-spin' : ''} />}
-      {text}
+      {warn || !connected || status === 'offline' ? <CloudOff size={12} className="shrink-0" /> : <RefreshCw size={12} className={`shrink-0 ${status === 'syncing' ? 'animate-spin' : ''}`} />}
+      <span className="truncate">{text}</span>
     </button>
   );
 }
@@ -156,9 +156,9 @@ export function ProgramView() {
   const header = (
     <header className="flex items-center justify-between gap-3">
       <Wordmark />
-      <div className="flex items-center gap-2">
+      <div className="flex min-w-0 items-center gap-2">
         <SyncBadge />
-        <button onClick={() => open({ type: 'settings' })} aria-label="Ayarlar" className="active:scale-95">
+        <button onClick={() => open({ type: 'settings' })} aria-label="Ayarlar" className="shrink-0 active:scale-95">
           <Plate size={38} fill={1}>
             <span className="num text-lg">{me.name.slice(0, 1).toLocaleUpperCase('tr')}</span>
           </Plate>

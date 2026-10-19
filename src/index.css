@@ -51,6 +51,7 @@ html {
 
 body {
   min-height: 100dvh;
+  overflow-x: clip;
   font-feature-settings: 'ss01', 'cv11';
   -webkit-font-smoothing: antialiased;
 }

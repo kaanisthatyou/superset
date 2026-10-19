@@ -145,7 +145,7 @@ Dizindeki her hareketin kas vurgulu animasyonu vardır; dizinde olmayan bir id k
   (raporda ▲) ağırlığı bir kademe artır (makinede bir plaka, dambılda 1–2 kg) ve `startKg` olarak yaz; ulaşmadıysa aynı
   ağırlıkta tekrar ekle. Alt sınırın altında kaldıysa (▼) ağırlığı düşür. Plato 3 seans sürerse hareketin bir
   varyasyonuna geç.
-- **Ağırlığa az bağımlı, kondisyon odaklı profil** (şu an nişanlısı): ilerlemeyi ağırlıkla değil tekrar, tempo (yavaş iniş),
+- **Ağırlığa az bağımlı, kondisyon odaklı profil** (şu an nişanlısı; hedefi zayıflamak/incelmek, kaslı görünmek istemiyor: yük çok hafif, tekrar 15–20+, dinlenme kısa, her gün sonunda kardiyo, ağırlık artırma): ilerlemeyi ağırlıkla değil tekrar, tempo (yavaş iniş),
   daha kısa dinlenme, bir set fazlası ve hareketin bir üst varyasyonuyla sağla (duvar şınavı → eğimli → diz üstü).
   Vücut ağırlığı, hafif dambıl, makine ve kardiyo ağırlıklı kalsın. İpuçlarını ona göre yaz: form, nefes, his.
   İkisinin ipuçları aynı harekette bile farklı olmalı; kopyalama.
