@@ -11,8 +11,10 @@ import {
   dayProgress,
   doneSets,
   previousSets,
+  placeDays,
   sessionVolume,
   suggestSet,
+  targetNumber,
   useHistory,
   useMe,
   useProgram,
@@ -82,13 +84,16 @@ function ExerciseCard({
     if (willComplete) onDone();
   };
 
+  // Süreli hareket (saniye ya da dakika): sayaç biter bitmez set kendiliğinden işaretlenir.
+  const timed = exercise.unit !== 'reps';
+  const workValue = reps ?? (exercise.unit === 'min' ? targetNumber(exercise.reps) || 10 : 30);
   const startWork = () => {
     prime();
     useApp.getState().startTimer({
       kind: 'work',
-      total: reps ?? 30,
+      total: exercise.unit === 'min' ? workValue * 60 : workValue,
       label: name,
-      target: { dayId: day.id, exerciseId: exercise.exerciseId, setIdx: active },
+      target: { dayId: day.id, exerciseId: exercise.exerciseId, setIdx: active, unit: exercise.unit },
     });
   };
 
@@ -203,24 +208,26 @@ function ExerciseCard({
                     />
                   </div>
                   <div className="mt-3 flex gap-2">
-                    {exercise.unit === 'sec' && (
+                    {timed && (
                       <button
                         onClick={startWork}
                         className="flex h-16 flex-1 items-center justify-center gap-2 rounded-full bg-ink text-chalk active:scale-[0.98]"
                       >
                         <Play size={18} fill="currentColor" />
-                        <span className="display text-2xl">{reps ?? 30} sn başlat</span>
+                        <span className="display text-2xl">
+                          {workValue} {unitShort(exercise.unit)} başlat
+                        </span>
                       </button>
                     )}
                     <button
                       onClick={() => finishSet(reps)}
                       className={`flex h-16 items-center justify-center gap-2 rounded-full bg-me text-on-me active:scale-[0.98] ${
-                        exercise.unit === 'sec' ? 'px-6' : 'flex-1'
+                        timed ? 'px-6' : 'flex-1'
                       }`}
                     >
                       <Check size={22} strokeWidth={3.5} />
                       <span className="display text-2xl">
-                        {exercise.unit === 'sec' ? 'Yaptım' : exercise.sets > 1 ? `Set ${active + 1} tamam` : 'Tamam'}
+                        {timed ? 'Yaptım' : exercise.sets > 1 ? `Set ${active + 1} tamam` : 'Tamam'}
                       </span>
                     </button>
                   </div>
@@ -323,7 +330,7 @@ export function SessionView({ dayId }: { dayId: string }) {
   return (
     <Sheet
       full
-      eyebrow={`${DAYS_LONG[day.weekday - 1]} · ${p.done}/${p.total} set`}
+      eyebrow={`${DAYS_LONG[placeDays(program, log).get(day.id)! - 1] ?? 'Gelecek hafta'} · ${p.done}/${p.total} set`}
       title={day.title}
       footer={
         <div className="h-1.5 bg-line" aria-hidden="true">

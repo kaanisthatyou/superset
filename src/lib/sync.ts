@@ -46,6 +46,11 @@ export function mergeWeekLog(local: WeekLog, remote: WeekLog): WeekLog {
     const b = remote.sessions[id];
     out.sessions[id] = a && b ? mergeSession(a, b) : (a ?? b);
   }
+  if (local.off || remote.off) {
+    out.off = {};
+    for (const date of new Set([...Object.keys(local.off ?? {}), ...Object.keys(remote.off ?? {})]))
+      out.off[date] = later(local.off?.[date], remote.off?.[date]);
+  }
   out.updatedAt = local.updatedAt > remote.updatedAt ? local.updatedAt : remote.updatedAt;
   return out;
 }

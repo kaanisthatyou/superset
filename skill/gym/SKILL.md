@@ -33,6 +33,10 @@ coach/journal.md                    senin günlüğün: her /gym çalışmasınd
 
 `logs/` ve `body/` uygulamaya aittir: oku, asla düzenleme.
 
+Haftalık kayıtta `off` alanı olabilir (`{"2026-10-21": {"off": true, "at": …}}`): uygulamadaki "Bugün off ver"
+düğmesiyle verilen dinlenme günü. O güne düşen antrenman ve ardındakiler ilk boş güne kayar; `report` bunu
+gösterir. Off'tan dolayı kayan bir günü "atlandı" sayma.
+
 ## Akış
 
 Argümansız `/gym` aşağıdaki adımların hepsini yapar. `/gym durum` yalnızca 1–3. adımları yapar (program yazmaz).

@@ -24,8 +24,8 @@ export function Dock() {
       () => {
         timerDone();
         if (timer.kind === 'work' && timer.target) {
-          const { dayId, exerciseId, setIdx } = timer.target;
-          completeSet(dayId, exerciseId, setIdx, { reps: timer.total });
+          const { dayId, exerciseId, setIdx, unit } = timer.target;
+          completeSet(dayId, exerciseId, setIdx, { reps: unit === 'min' ? Math.round(timer.total / 60) : timer.total });
         } else {
           useApp.getState().clearTimer();
           setReady(true);
@@ -53,6 +53,17 @@ export function Dock() {
   }, [song]);
 
   const remaining = timer ? Math.max(0, (timer.endsAt - Date.now()) / 1000) : 0;
+  // Dakikalık hareketlerde (yürüyüş, bisiklet) 15 sn eklemek anlamsız: 1 dk eklenir.
+  const bump = timer?.target?.unit === 'min' ? 60 : 15;
+
+  // Süreli set erken bitirilirse yapılan kadarı kaydedilir.
+  const stop = () => {
+    if (timer?.kind === 'work' && timer.target) {
+      const { dayId, exerciseId, setIdx, unit } = timer.target;
+      const elapsed = timer.total - remaining;
+      completeSet(dayId, exerciseId, setIdx, { reps: unit === 'min' ? Math.max(1, Math.round(elapsed / 60)) : Math.max(1, Math.round(elapsed)) });
+    } else useApp.getState().clearTimer();
+  };
 
   return (
     <div
@@ -153,17 +164,17 @@ export function Dock() {
                 <p className="num text-[3.25rem] tabular-nums">{fmtClock(remaining)}</p>
                 <div className="flex items-center gap-1.5">
                   <button
-                    onClick={() => useApp.getState().adjustTimer(15)}
+                    onClick={() => useApp.getState().adjustTimer(bump)}
                     className="h-11 rounded-full bg-chalk/15 px-3 font-mono text-xs font-medium backdrop-blur active:scale-95"
-                    aria-label="15 saniye ekle"
+                    aria-label={bump === 60 ? '1 dakika ekle' : '15 saniye ekle'}
                   >
-                    +15
+                    {bump === 60 ? '+1 dk' : '+15'}
                   </button>
                   <button
-                    onClick={() => useApp.getState().clearTimer()}
+                    onClick={stop}
                     className="h-11 rounded-full bg-chalk px-4 text-sm font-semibold text-ink active:scale-95"
                   >
-                    Geç
+                    {timer.kind === 'work' && timer.target ? 'Bitir' : 'Geç'}
                   </button>
                 </div>
               </div>

@@ -12,6 +12,7 @@ import type {
   ProgramExercise,
   SessionLog,
   SetLog,
+  Unit,
   WeekLog,
 } from './types';
 
@@ -39,7 +40,7 @@ export interface Timer {
   total: number;
   label: string;
   /** Süre tutulan set bitince işaretlensin diye. */
-  target?: { dayId: string; exerciseId: string; setIdx: number };
+  target?: { dayId: string; exerciseId: string; setIdx: number; unit: Unit };
 }
 
 export interface AppState {
@@ -68,6 +69,8 @@ export interface AppState {
     patch: Partial<SetLog>;
   }) => void;
   patchSession: (dayId: string, patch: Partial<SessionLog>) => void;
+  /** Bu günü (ya da off'u geri alıp) verilen kişiler için işaretler. */
+  setOff: (profiles: string[], date: string, off: boolean) => void;
   addBody: (entry: Omit<BodyEntry, 'at'>) => void;
   updateProfile: (id: string, patch: Partial<Profile>) => void;
   startTimer: (timer: Omit<Timer, 'endsAt'>) => void;
@@ -163,6 +166,22 @@ export const useApp = create<AppState>()(
           log.sessions[dayId] = { ...log.sessions[dayId], ...patch, updatedAt: now };
           log.updatedAt = now;
           return write(s, path, log);
+        }),
+
+      setOff: (profiles, date, off) =>
+        set((s) => {
+          const week = mondayOf(date);
+          const now = new Date().toISOString();
+          let out: Pick<AppState, 'files' | 'dirty'> = { files: s.files, dirty: s.dirty };
+          for (const profile of profiles) {
+            const path = logPath(profile, week);
+            const prev = readFile<WeekLog>({ ...s, ...out }, path);
+            const log: WeekLog = prev ? structuredClone(prev) : { profile, week, updatedAt: now, sessions: {} };
+            log.off = { ...log.off, [date]: { off, at: now } };
+            log.updatedAt = now;
+            out = write({ ...s, ...out }, path, log);
+          }
+          return out;
         }),
 
       addBody: (entry) =>

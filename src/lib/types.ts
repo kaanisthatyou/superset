@@ -97,12 +97,20 @@ export interface SessionLog {
   exercises: Record<string, ExerciseLog>;
 }
 
+export interface OffDay {
+  /** false: off geri alındı (iki cihaz birleşirken son dokunuş kazansın diye silinmez). */
+  off: boolean;
+  at: string;
+}
+
 export interface WeekLog {
   profile: string;
   /** Haftanın pazartesi tarihi */
   week: string;
   updatedAt: string;
   sessions: Record<string, SessionLog>;
+  /** Tarih → off. O güne düşen antrenman ve ardındakiler bir gün kayar. */
+  off?: Record<string, OffDay>;
 }
 
 export interface BodyEntry {

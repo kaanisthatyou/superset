@@ -177,25 +177,66 @@ export function suggestSet(
   };
 }
 
-/** Haftanın günlerine göre plan: 1..7 → o güne önerilen antrenman. */
-export function daysByWeekday(program: Program | undefined) {
+/** Off verilen günler, haftanın günü olarak (1..7). */
+export const offWeekdays = (log: WeekLog | undefined) =>
+  new Set(
+    Object.entries(log?.off ?? {})
+      .filter(([, o]) => o.off)
+      .map(([date]) => weekdayOf(date)),
+  );
+
+/**
+ * Antrenmanların bu haftaki yeri (gün id → 1..7, haftayı aşarsa 8+). Başlanan antrenman yapıldığı güne
+ * oturur; off günüyle ya da dolu bir günle çakışan, ilk boş güne kayar ve ardındakileri de iter.
+ */
+export function placeDays(program: Program | undefined, log: WeekLog | undefined) {
+  const place = new Map<string, number>();
+  const taken = offWeekdays(log);
+  const days = [...(program?.days ?? [])].sort((a, b) => a.weekday - b.weekday);
+  for (const d of days) {
+    const date = log?.sessions[d.id]?.date;
+    if (date && dayProgress(d, log?.sessions[d.id]).started) {
+      place.set(d.id, weekdayOf(date));
+      taken.add(weekdayOf(date));
+    }
+  }
+  for (const d of days) {
+    if (place.has(d.id)) continue;
+    let wd = d.weekday;
+    while (taken.has(wd)) wd++;
+    place.set(d.id, wd);
+    taken.add(wd);
+  }
+  return place;
+}
+
+/** Haftanın günlerine göre plan: 1..7 → o güne düşen antrenman (off kaymaları dahil). */
+export function daysByWeekday(program: Program | undefined, log?: WeekLog) {
+  const place = placeDays(program, log);
   const map = new Map<number, ProgramDay>();
-  for (const d of program?.days ?? []) if (!map.has(d.weekday)) map.set(d.weekday, d);
+  for (const d of program?.days ?? []) {
+    const wd = place.get(d.id)!;
+    if (!map.has(wd)) map.set(wd, d);
+  }
   return map;
 }
 
-/** Bugün yapılacak gün: bugüne planlanan; yoksa/bittiyse sıradaki bitmemiş gün. */
+/** Bugün yapılacak gün: bugüne düşen; yoksa/bittiyse sıradaki bitmemiş gün. */
 export function pickToday(program: Program, log: WeekLog | undefined) {
   const wd = weekdayOf(today());
-  const planned = program.days.find((d) => d.weekday === wd);
+  const place = placeDays(program, log);
+  const at = (d: ProgramDay) => place.get(d.id)!;
+  const days = [...program.days].sort((a, b) => at(a) - at(b));
+  const planned = days.find((d) => at(d) === wd);
   const open = (d: ProgramDay) => !dayProgress(d, log?.sessions[d.id]).complete;
   if (planned && open(planned)) return { day: planned, kind: 'today' as const };
-  const inProgress = program.days.find((d) => open(d) && dayProgress(d, log?.sessions[d.id]).started);
+  const inProgress = days.find((d) => open(d) && dayProgress(d, log?.sessions[d.id]).started);
   if (inProgress) return { day: inProgress, kind: 'resume' as const };
+  const next = days.find((d) => at(d) > wd && open(d));
+  if (offWeekdays(log).has(wd)) return { day: next ?? null, kind: 'off' as const };
   if (planned) return { day: planned, kind: 'done' as const };
-  const missed = program.days.find((d) => d.weekday < wd && open(d));
+  const missed = days.find((d) => at(d) < wd && open(d));
   if (missed) return { day: missed, kind: 'missed' as const };
-  const next = program.days.find((d) => d.weekday > wd && open(d));
   return next ? { day: next, kind: 'rest' as const } : { day: null, kind: 'weekDone' as const };
 }
 

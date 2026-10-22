@@ -1,10 +1,21 @@
 import { motion } from 'motion/react';
-import { ArrowRight, Check, ChevronRight, CloudOff, RefreshCw } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, Check, ChevronRight, CloudOff, Moon, RefreshCw, Undo2 } from 'lucide-react';
 import { Gif } from '../components/Gif';
 import { Plate } from '../components/Plate';
 import { Section } from '../components/bits';
 import { addDays, DAYS_LONG, DAYS_SHORT, fmtDay, fmtRange, fmtTime, isoWeek, mondayOf, today, weekdayOf } from '../lib/dates';
-import { dayProgress, daysByWeekday, pickToday, useMe, usePartner, useProgram, useWeekLog } from '../lib/domain';
+import {
+  dayProgress,
+  daysByWeekday,
+  offWeekdays,
+  pickToday,
+  placeDays,
+  useMe,
+  usePartner,
+  useProgram,
+  useWeekLog,
+} from '../lib/domain';
 import { exerciseName } from '../lib/exercises';
 import { PLATES } from '../lib/labels';
 import { useApp } from '../lib/store';
@@ -80,7 +91,8 @@ function WeekRail({
           </span>
         ))}
         {rows.map(({ profile, program, log, mine }) => {
-          const plan = daysByWeekday(program);
+          const plan = daysByWeekday(program, log);
+          const off = offWeekdays(log);
           const plate = PLATES[profile.color];
           return [
             <span key={profile.id} className="num text-lg" style={{ color: plate.bg }} title={profile.name}>
@@ -100,6 +112,8 @@ function WeekRail({
                     >
                       {p.complete && <Check size={mine ? 15 : 12} strokeWidth={3.5} />}
                     </Plate>
+                  ) : off.has(i + 1) ? (
+                    <span className="font-mono text-[0.6rem] font-medium text-mist">off</span>
                   ) : (
                     <span className="h-1.5 w-1.5 rounded-full bg-line" />
                   )}
@@ -113,7 +127,7 @@ function WeekRail({
   );
 }
 
-function DayRow({ day, log, index }: { day: ProgramDay; log: WeekLog | undefined; index: number }) {
+function DayRow({ day, log, index, weekday }: { day: ProgramDay; log: WeekLog | undefined; index: number; weekday: number }) {
   const p = dayProgress(day, log?.sessions[day.id]);
   return (
     <motion.button
@@ -127,7 +141,7 @@ function DayRow({ day, log, index }: { day: ProgramDay; log: WeekLog | undefined
         {p.complete ? (
           <Check size={22} strokeWidth={3.5} />
         ) : (
-          <span className="eyebrow !text-[0.6rem]">{DAYS_SHORT[day.weekday - 1]}</span>
+          <span className="eyebrow !text-[0.6rem]">{DAYS_SHORT[weekday - 1] ?? 'Sonra'}</span>
         )}
       </Plate>
       <span className="min-w-0 flex-1">
@@ -152,6 +166,7 @@ export function ProgramView() {
   const myLog = useWeekLog(me.id, week);
   const theirLog = useWeekLog(partner?.id, week);
   const open = useUi((s) => s.open);
+  const [askOff, setAskOff] = useState(false);
 
   const header = (
     <header className="flex items-center justify-between gap-3">
@@ -188,17 +203,28 @@ export function ProgramView() {
   const wd = weekdayOf(today());
   const day = pick.day;
   const p = day ? dayProgress(day, myLog?.sessions[day.id]) : null;
+  const place = placeDays(program, myLog);
+  const dayName = (d: ProgramDay) => DAYS_LONG[place.get(d.id)! - 1] ?? 'Gelecek hafta';
+  const canOff = (pick.kind === 'today' || pick.kind === 'missed') && !p!.started;
+  const theirOff = offWeekdays(theirLog).has(wd);
+  const setOff = (profiles: string[], off: boolean) => {
+    useApp.getState().setOff(profiles, today(), off);
+    setAskOff(false);
+    useUi.getState().showToast(off ? 'Bugün off. Program bir gün kaydı' : "Off geri alındı");
+  };
 
   const eyebrow = {
     today: `Bugün · ${DAYS_LONG[wd - 1]}`,
     resume: 'Yarım kaldı',
     done: `Bugün tamam · ${DAYS_LONG[wd - 1]}`,
-    missed: day ? `${DAYS_LONG[day.weekday - 1]} gününden kaldı` : '',
+    missed: day ? `${dayName(day)} gününden kaldı` : '',
     rest: `Bugün dinlenme · ${DAYS_LONG[wd - 1]}`,
+    off: `Bugün off · ${DAYS_LONG[wd - 1]}`,
     weekDone: 'Bu hafta tamam',
   }[pick.kind];
 
-  const title = pick.kind === 'rest' ? 'Dinlen' : pick.kind === 'weekDone' ? 'Hafta bitti' : day!.title;
+  const resting = pick.kind === 'rest' || pick.kind === 'off';
+  const title = resting ? 'Dinlen' : pick.kind === 'weekDone' ? 'Hafta bitti' : day!.title;
   const cta =
     pick.kind === 'today' || pick.kind === 'missed'
       ? p!.started
@@ -206,8 +232,8 @@ export function ProgramView() {
         : 'Antrenmana başla'
       : pick.kind === 'resume'
         ? `Devam et · ${p!.done}/${p!.total} set`
-        : pick.kind === 'rest'
-          ? `Sıradaki: ${DAYS_LONG[day!.weekday - 1]} — ${day!.title}`
+        : resting && day
+          ? `Sıradaki: ${dayName(day)} — ${day.title}`
           : null;
 
   return (
@@ -222,18 +248,23 @@ export function ProgramView() {
       >
         <p className="eyebrow text-steel">{eyebrow}</p>
         <h1 className="display mt-[0.2em] text-[clamp(3.6rem,18vw,7.5rem)] text-balance">{title}</h1>
-        {day && pick.kind !== 'rest' && (
+        {day && !resting && (
           <p className="mt-3 text-steel">
             {[day.subtitle, `${day.exercises.length} hareket`, day.minutes && `~${day.minutes} dk`]
               .filter(Boolean)
               .join(' · ')}
           </p>
         )}
+        {pick.kind === 'off' && (
+          <p className="mt-3 max-w-sm text-steel">
+            {day ? 'Bugünün antrenmanı ve ardındakiler birer gün kaydı.' : 'Bu haftanın kalanı boş.'}
+          </p>
+        )}
         {pick.kind === 'weekDone' && (
           <p className="mt-3 max-w-sm text-steel">Bu haftanın bütün antrenmanları işaretlendi. İyi dinlen.</p>
         )}
 
-        {day && pick.kind !== 'rest' && pick.kind !== 'done' && (
+        {day && !resting && pick.kind !== 'done' && (
           <div className="no-scrollbar -mx-5 mt-5 flex gap-2 overflow-x-auto px-5">
             {day.exercises.map((e, i) => (
               <div key={e.exerciseId + i} className="w-[5.5rem] shrink-0">
@@ -250,17 +281,49 @@ export function ProgramView() {
           <button
             onClick={() => open({ type: 'session', dayId: day.id })}
             className={`mt-6 flex h-16 w-full items-center justify-between rounded-full pl-7 pr-2 text-left active:scale-[0.985] ${
-              pick.kind === 'rest' ? 'bg-paper text-ink ring-1 ring-line' : 'bg-me text-on-me'
+              resting ? 'bg-paper text-ink ring-1 ring-line' : 'bg-me text-on-me'
             }`}
           >
-            <span className={pick.kind === 'rest' ? 'font-medium' : 'display text-[1.7rem]'}>{cta}</span>
+            <span className={resting ? 'font-medium' : 'display text-[1.7rem]'}>{cta}</span>
             <span
               className={`grid h-12 w-12 place-items-center rounded-full ${
-                pick.kind === 'rest' ? 'bg-chalk' : 'bg-ink/20'
+                resting ? 'bg-chalk' : 'bg-ink/20'
               }`}
             >
               <ArrowRight size={22} strokeWidth={2.75} />
             </span>
+          </button>
+        )}
+
+        {canOff &&
+          (askOff && partner ? (
+            <div className="mt-3 flex items-center gap-2">
+              <span className="mr-auto pl-2 text-sm text-steel">Kim için off?</span>
+              <button onClick={() => setOff([me.id], true)} className="h-11 rounded-full px-4 text-sm font-medium ring-1 ring-line active:scale-95">
+                Sadece ben
+              </button>
+              <button
+                onClick={() => setOff([me.id, partner.id], true)}
+                className="h-11 rounded-full bg-ink px-4 text-sm font-semibold text-chalk active:scale-95"
+              >
+                İkimiz
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => (partner ? setAskOff(true) : setOff([me.id], true))}
+              className="mt-3 flex h-11 w-full items-center justify-center gap-2 rounded-full text-sm font-medium text-steel ring-1 ring-line active:scale-[0.985]"
+            >
+              <Moon size={15} /> Bugün off ver · programı bir gün kaydır
+            </button>
+          ))}
+
+        {pick.kind === 'off' && (
+          <button
+            onClick={() => setOff(partner && theirOff ? [me.id, partner.id] : [me.id], false)}
+            className="mt-3 flex h-11 w-full items-center justify-center gap-2 rounded-full text-sm font-medium text-steel ring-1 ring-line active:scale-[0.985]"
+          >
+            <Undo2 size={15} /> Off'u geri al{partner && theirOff ? ' · ikimiz' : ''}
           </button>
         )}
       </motion.section>
@@ -280,8 +343,8 @@ export function ProgramView() {
           ]}
         />
         <div className="mt-3 flex flex-col gap-2.5">
-          {program.days.map((d, i) => (
-            <DayRow key={d.id} day={d} log={myLog} index={i} />
+          {[...program.days].sort((a, b) => place.get(a.id)! - place.get(b.id)!).map((d, i) => (
+            <DayRow key={d.id} day={d} log={myLog} index={i} weekday={place.get(d.id)!} />
           ))}
         </div>
       </Section>

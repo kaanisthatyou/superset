@@ -75,6 +75,18 @@ for (const profile of profiles) {
     const sessions = Object.values(log.sessions ?? {}).sort((a, b) => a.date.localeCompare(b.date));
     const program = byId.get(sessions[0]?.programId) ?? started.filter((p) => p.startDate <= addDays(log.week, 6)).at(-1);
     const planned = program?.days ?? [];
+    // Off günü: o güne düşen antrenman ve ardındakiler ilk boş güne kayar (uygulamadaki placeDays ile aynı).
+    const offDates = Object.entries(log.off ?? {}).filter(([, o]) => o.off).map(([d]) => d).sort();
+    const taken = new Set(offDates.map(weekdayOf));
+    const place = new Map();
+    for (const d of planned) if (log.sessions?.[d.id]?.date) taken.add(weekdayOf(log.sessions[d.id].date));
+    for (const d of [...planned].sort((a, b) => a.weekday - b.weekday)) {
+      if (log.sessions?.[d.id]) continue;
+      let wd = d.weekday;
+      while (taken.has(wd)) wd++;
+      place.set(d.id, wd);
+      taken.add(wd);
+    }
     let doneSets = 0;
     let plannedSets = 0;
     const lines = [];
@@ -84,9 +96,12 @@ for (const profile of profiles) {
       const total = day.exercises.reduce((n, e) => n + e.sets, 0);
       plannedSets += total;
       if (!s) {
-        const due = addDays(log.week, day.weekday - 1);
-        lines.push(`  - ${DAYS[day.weekday - 1]} · ${day.title}: ${due > today ? 'henüz günü gelmedi' : 'YAPILMADI'}`);
-        if (due < today && log.week === mondayOf(today)) flags.push(`${day.title} (${DAYS[day.weekday - 1]}) bu hafta atlandı`);
+        const wd = place.get(day.id);
+        const due = addDays(log.week, wd - 1);
+        const when = wd > 7 ? 'haftaya taştı' : DAYS[wd - 1];
+        const moved = wd !== day.weekday ? ` (planı ${DAYS[day.weekday - 1]}, off yüzünden kaydı)` : '';
+        lines.push(`  - ${when} · ${day.title}${moved}: ${due > today ? 'henüz günü gelmedi' : 'YAPILMADI'}`);
+        if (due < today && log.week === mondayOf(today)) flags.push(`${day.title} (${when}) bu hafta atlandı`);
         continue;
       }
       let done = 0;
@@ -125,6 +140,7 @@ for (const profile of profiles) {
     const sessionCount = planned.filter((d) => log.sessions?.[d.id]).length;
     say();
     say(`HAFTA ${log.week}${log.week === mondayOf(today) ? ' (bu hafta)' : ''} — ${sessionCount}/${planned.length} antrenman, ${doneSets}/${plannedSets} set${program ? ` — program: ${program.title}` : ''}`);
+    if (offDates.length) say(`  Off verilen gün: ${offDates.map((d) => `${DAYS[weekdayOf(d) - 1]} ${d}`).join(', ')}`);
     for (const l of lines) say(l);
   }
 
