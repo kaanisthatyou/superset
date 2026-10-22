@@ -15,6 +15,19 @@ export function isUnlocked(): boolean {
   }
 }
 
+/** Kurulum bağlantısına konan anahtar: bağlantıyla gelen cihaz şifre sormadan açılır. */
+export const lockKey = () => __LOCK__?.hash;
+
+/** Kurulum bağlantısıyla gelen anahtar doğruysa kapıyı açar. */
+export function unlockWithKey(key: string | undefined) {
+  if (!__LOCK__ || key !== __LOCK__.hash) return;
+  try {
+    localStorage.setItem(KEY, key);
+  } catch {
+    // özel pencerede hatırlanmaz
+  }
+}
+
 export async function unlock(password: string): Promise<boolean> {
   if (!__LOCK__) return true;
   const enc = new TextEncoder();

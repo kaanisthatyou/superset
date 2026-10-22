@@ -1,6 +1,6 @@
 ---
 name: gym
-description: Süperset koçu. Kaan ve nişanlısının antrenman kayıtlarını özel GitHub deposundan çeker, nasıl gittiklerini analiz eder, programın süresi dolduysa (tarihe bakarak) ikisine de yeni haftalık programı yazıp depoya gönderir. Tetikleyiciler - /gym, "gym", "spor programı", "antrenman analizi", "yeni hafta programı", "nasıl gidiyoruz", "süperset".
+description: Süperset koçu. Kaan ve nişanlısının (ya da `/gym semra` ile Semra ve Filiz'in) antrenman kayıtlarını özel GitHub deposundan çeker, nasıl gittiklerini analiz eder, programın süresi dolduysa (tarihe bakarak) ikisine de yeni haftalık programı yazıp depoya gönderir. Tetikleyiciler - /gym, "gym", "spor programı", "antrenman analizi", "yeni hafta programı", "nasıl gidiyoruz", "süperset".
 ---
 
 # /gym — Süperset koçu
@@ -16,6 +16,19 @@ programı oradan çeker. Kaan'la Türkçe konuş; kısa, somut, sayılarla.
 | Uygulama kodu ve araçlar | `%USERPROFILE%\Desktop\Coding(Real)\superset` (bundan sonra `APP`). Emin değilsen `~/.claude2/skills/gym` bağlantısının hedefinin iki üst klasörü. |
 | Özel veri deposunun yerel kopyası | `APP\data` (ayrı bir git deposu; `APP\.gitignore` içinde) |
 | Veri deposu (GitHub, özel) | `APP\data` içinde `git remote get-url origin` |
+
+**İki grup var.** Her grubun kendi özel veri deposu ve yerel kopyası vardır; uygulama aynıdır, cihaz hangi depoya
+bağlıysa yalnızca o grubun iki kişisini görür.
+
+| Grup | Komut | Yerel kopya (`DATA`) | Depo |
+| --- | --- | --- | --- |
+| Kaan ve Tuğba | `/gym …` | `APP\data` | `kaanisthatyou/superset-data` |
+| Semra ve Filiz | `/gym semra …` (ya da `filiz`) | `APP\data-semra-filiz` | `kaanisthatyou/superset-semra-filiz` |
+
+Bu belgede `APP/data` geçen her yerde seçili grubun `DATA` klasörünü kullan ve `tools/` betiklerine `--data "DATA"`
+ver (`node "APP/tools/report.mjs" --data "APP/data-semra-filiz"`). Grupları asla karıştırma: bir grubun bilgisi,
+programı ya da adı diğerinin deposuna girmez. Semra ve Filiz'le Kaan aracılığıyla konuşursun; değerlendirmeyi
+Kaan'a söyle, program metinlerinde onlara hitap et.
 
 `APP\data` yoksa: Kaan'a depo adresini sor (varsayılan `https://github.com/kaanisthatyou/superset-data.git`) ve
 `git clone <adres> "APP/data"` çalıştır. Başka bir makinedeysen (ev dizüstüsü) yol aynıdır; klasör Syncthing ile gelir.

@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import type { GhConfig } from './github';
+import { lockKey, unlockWithKey } from './lock';
 import { useApp } from './store';
 
 // ── "Uygulamayı yükle" ─────────────────────────────────────────────────────
@@ -36,6 +37,8 @@ interface SetupPayload {
   r: string;
   t: string;
   p?: string;
+  /** Site şifresinin özeti: bağlantıyı alan şifreyi ayrıca bilmek zorunda kalmasın. */
+  k?: string;
 }
 
 const toBase64Url = (s: string) =>
@@ -48,7 +51,7 @@ const fromBase64Url = (s: string) =>
   new TextDecoder().decode(Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/')), (c) => c.charCodeAt(0)));
 
 export function setupLink(cfg: GhConfig, profile?: string) {
-  const payload: SetupPayload = { o: cfg.owner, r: cfg.repo, t: cfg.token, p: profile };
+  const payload: SetupPayload = { o: cfg.owner, r: cfg.repo, t: cfg.token, p: profile, k: lockKey() };
   return `${location.origin}${location.pathname}#kur=${toBase64Url(JSON.stringify(payload))}`;
 }
 
@@ -58,8 +61,9 @@ export function consumeSetupLink() {
   if (!match) return;
   history.replaceState(null, '', location.pathname + location.search);
   try {
-    const { o, r, t, p } = JSON.parse(fromBase64Url(match[1])) as SetupPayload;
+    const { o, r, t, p, k } = JSON.parse(fromBase64Url(match[1])) as SetupPayload;
     if (!o || !r || !t) return;
+    unlockWithKey(k);
     useApp.getState().connect({ owner: o, repo: r, token: t });
     if (p) useApp.getState().setMe(p);
   } catch {
