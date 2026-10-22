@@ -100,7 +100,7 @@ for (const profile of profiles) {
         const due = addDays(log.week, wd - 1);
         const when = wd > 7 ? 'haftaya taştı' : DAYS[wd - 1];
         const moved = wd !== day.weekday ? ` (planı ${DAYS[day.weekday - 1]}, off yüzünden kaydı)` : '';
-        lines.push(`  - ${when} · ${day.title}${moved}: ${due > today ? 'henüz günü gelmedi' : 'YAPILMADI'}`);
+        lines.push(`  - ${when} · ${day.title}${moved}: ${due > today ? 'henüz günü gelmedi' : due === today ? 'bugün' : 'YAPILMADI'}`);
         if (due < today && log.week === mondayOf(today)) flags.push(`${day.title} (${when}) bu hafta atlandı`);
         continue;
       }
